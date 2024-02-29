@@ -1,0 +1,28 @@
+entidades:
+-conferencia: titulo 
+              num_registo
+
+-artigo:    
+
+-autores:   nome
+            email
+            instituição
+
+-instituição:   nome
+                endereço
+
+participantes:  nome
+                morada
+                email
+                instituição
+                data_inscrição;
+                tipo_estudante;
+
+estudantes: comprovativo
+
+nao estudantes: referência_transação
+
+
+
+
+        

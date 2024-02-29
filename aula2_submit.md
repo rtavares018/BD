@@ -35,7 +35,6 @@ Specify the relationships regarding the degree, cardinality and instances mandat
 ```
 Encomenda - Produtos : NM : 2
 Encomenda - Fornecedor : N1 : 2
-Armazéns - Produtos: 
 
 
 ```
