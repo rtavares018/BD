@@ -20,7 +20,7 @@ Considere um Sistema de Gestão de Stocks de uma empresa. O presente exercício 
 Identify the entities, attributes, and relationships of the database.
 
 ```
-- Produtos (codigo, nome, preço, taxa, num_unidade_armazem)
+- Produto (codigo, nome, preço, taxa, num_unidade_armazem)
 - Armazem(codigo, num_unidades)
 - Encomenda (num, data)
 - Fornecedor(nome, nif, endereço, fax, cond_pagamento, cod_tipo_fornecedor)
@@ -33,8 +33,9 @@ Identify the entities, attributes, and relationships of the database.
 Specify the relationships regarding the degree, cardinality and instances mandatory participation of the entities in the relationship.
 
 ```
-Encomenda - Produtos : NM : 2
+Encomenda - Produto : NM : 2 
 Encomenda - Fornecedor : N1 : 2
+Armazéns - Produtos: 
 
 
 ```
