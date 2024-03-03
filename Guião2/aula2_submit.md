@@ -21,7 +21,6 @@ Identify the entities, attributes, and relationships of the database.
 
 ```
 - Produto (codigo, nome, preço, taxa, num_unidade_armazem)
-- Armazem(codigo, num_unidades)
 - Encomenda (num, data)
 - Fornecedor(nome, nif, endereço, fax, cond_pagamento, cod_tipo_fornecedor)
 
@@ -35,8 +34,6 @@ Specify the relationships regarding the degree, cardinality and instances mandat
 ```
 Encomenda - Produto : NM : 2 
 Encomenda - Fornecedor : N1 : 2
-Armazéns - Produtos: 
-
 
 ```
 
