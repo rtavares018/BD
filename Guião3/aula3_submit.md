@@ -29,7 +29,7 @@ SIMILARIDADE_TIPO_VEICULO(tipo_codigo A, tipo_codigo B)
 
 ```
 |                           | Chave Candidata               | Chave Primária              | Chave Estrangeira                      |
-|---------------------------|-----------------              |----------------             |----------------------------------------|
+|---------------------------|------------------------------ |---------------------------- |----------------------------------------|
 | CLIENTE                   |  num_carta, NIF               | NIF                         | -------------------------------------- |
 | ALUGUER                   |  número                       | número                      | NIF_cliente,n_balcao,matricula_veiculo |
 | BALCAO                    |  número                       | número                      | -------------------------------------- |
