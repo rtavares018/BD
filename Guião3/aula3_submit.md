@@ -53,7 +53,7 @@ Esquema relação r(R):
 AIRPORT(Airport_code, City, State, Name)
 AIRPLANE_TYPE(Type_name, Max_seats, Company)
 AIRPLANE(Airplane_id, Total_no_of_seats, AIRPLANE_TYPE.Type_name)
-LEG_INSTANCE (Date, No_of_avail_seats, AIRPLANE.Airplane_ID, Dep_time, Arr_time, Departe AIRPORT.Code, Arrival AIRPORT.Code, FLIGHT.Number, FLIGHT_LEG.no)
+LEG_INSTANCE (Date, No_of_avail_seats, AIRPLANE.Airplane_ID, Dep_time, Arr_time, Departe AIRPORT.Airport_code, Arrival AIRPORT.Airport_code, FLIGHT.Number, FLIGHT_LEG_no)
 FARE(Code, Amount, Restrictions, FLIGHT.Number)
 FLIGHT(Number, Airline, Weekdays)
 FLIGHT_LEG(Leg_no, FLIGHT.Number, Departe AIRPORT.Code, Arrival AIRPORT.Code, Scheduled_arr_time, Scheduled_dep_time,
