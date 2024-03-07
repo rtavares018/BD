@@ -44,7 +44,7 @@ SIMILARIDADE_TIPO_VEICULO(tipo_codigo A, tipo_codigo B)
 
 ### *c)* 
 
-![ex_3_1c!](ex_3_1c.jpg "AnImage")
+![ex_3_1c!](ex_3_1c.png "AnImage")
 
 
 ## ​Problema 3.2
@@ -73,7 +73,8 @@ SIMILARIDADE_TIPO_VEICULO(tipo_codigo A, tipo_codigo B)
 
 ### *a)* 2.1
 
-![ex_3_3_a!](ex_3_3a.jpg "AnImage")
+
+![ex_3_3_a!](ex_3_3a.png "AnImage")
 
 ### *b)* 2.2
 
