@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-03-07T12:48:04.148Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="ybfVqGfTMmrbEoPWSblJ" version="24.0.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-07T12:49:50.944Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="c6ao8euuaMmtnF3bVMm8" version="24.0.1" type="github">
   <diagram name="Página-1" id="Hzssy5CMI8nyhF7wrBr9">
     <mxGraphModel dx="1290" dy="565" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -36,6 +36,24 @@
         </mxCell>
         <mxCell id="vWgkm_PZi4vlfXVPb86A-5" value="produto_codigo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="318" y="180" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-7" value="&lt;u&gt;NIF&lt;/u&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="280" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-9" value="endereço" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="128" y="280" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-10" value="Fornecedor" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="250" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-11" value="nome" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="224" y="280" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-12" value="cond_pagamento" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vWgkm_PZi4vlfXVPb86A-13" value="fax" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="418" y="280" width="96" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
