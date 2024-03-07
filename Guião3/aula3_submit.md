@@ -20,7 +20,7 @@ LIGEIRO(numlugares, portas, combustivel)
 
 PESADO(peso, passageiros)
 
-SIMILARIDADE de TIPO_VEICULO ????????
+SIMILARIDADE_TIPO_VEICULO(tipo_codigo A, tipo_codigo B)
 
 ```
 
@@ -28,15 +28,16 @@ SIMILARIDADE de TIPO_VEICULO ????????
 ### *b)* 
 
 ```
-|              | Chave Candidata | Chave Primária | Chave Estrangeira |
-|--------------|-----------------|----------------|-------------------|
-| CLIENTE      |  num_carta, NIF | NIF            |                   |
-| ALUGUER      |  número         | número         |                   |
-| BALCAO       |  número         | número         |                   |
-| VEICULO      |  matricula      | matricula      |                   |
-| TIPO_VEICULO |  codigo         | codigo         |                   |
-| LIGEIRO      | --------------  | -------------- |                   |
-| PESADO       | --------------  | -------------- |                   |
+|                           | Chave Candidata               | Chave Primária              | Chave Estrangeira                      |
+|---------------------------|-----------------              |----------------             |----------------------------------------|
+| CLIENTE                   |  num_carta, NIF               | NIF                         | -------------------------------------- |
+| ALUGUER                   |  número                       | número                      | NIF_cliente,n_balcao,matricula_veiculo |
+| BALCAO                    |  número                       | número                      | -------------------------------------- |
+| VEICULO                   |  matricula                    | matricula                   | tipo_codigo                            |
+| TIPO_VEICULO              |  codigo                       | codigo                      | -------------------------------------- |
+| LIGEIRO                   | ----------------------------- | --------------------------- | tipo_codigo                            |
+| PESADO                    | ----------------------------- | --------------------------- | tipo_codigo                            |
+| SIMILARIDADE_TIPO_VEICULO | tipo_codigo A, tipo_codigo B  |tipo_codigo A, tipo_codigo B | tipo_codigo A, tipo_codigo B           |
 
 ```
 
