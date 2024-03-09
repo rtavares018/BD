@@ -110,7 +110,7 @@ CAN_LAND - AIRPORT.Airport_code, AIRPLANE.Type_name
 
 ### _b)_ 2.2
 
-![ex_3_3_b!](ex_3_3b.jpg "AnImage")
+![ex_3_3_b!](ex_3_3b.png "AnImage")
 
 ### _c)_ 2.3
 
