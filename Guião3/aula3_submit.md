@@ -118,4 +118,4 @@ CAN_LAND - AIRPORT.Airport_code, AIRPLANE.Type_name
 
 ### _d)_ 2.4
 
-![ex_3_3_d!](ex_3_3d.jpg "AnImage")
+![ex_3_3_d!](ex_3_3d.png "AnImage")
