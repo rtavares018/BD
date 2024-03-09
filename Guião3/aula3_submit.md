@@ -82,7 +82,7 @@ SIMILARIDADE_TIPO_VEICULO(tipo_codigo A, tipo_codigo B)
 
 ### *c)* 2.3
 
-![ex_3_3_c!](ex_3_3c.jpg "AnImage")
+![ex_3_3_c!](ex_3_3c.png "AnImage")
 
 ### *d)* 2.4
 
