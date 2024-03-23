@@ -34,42 +34,62 @@ tempo= γ  Pno;  sum(Hours)->Hours (works_on)
 ### *d)* 
 
 ```
-... Write here your answer ...
+funcionario= π Fname,Lname,Ssn,Pname,Dno ((employee ⨝ Ssn=Essn works_on ) ⨝ Pnumber=Pno project )
+tempo= γ  Pno;  sum(Hours)->Hours (works_on)
+projeto= π Pname (σ Pname='Aveiro Digital' (project))
+π Fname,Lname (σ Dno=3 ∧ Hours>20 (funcionario⨝projeto⨝tempo))
+
+
 ```
 
 
 ### *e)* 
 
 ```
-... Write here your answer ...
+π Fname,Lname, Pno (σ Pno=null (employee ⟕Ssn=Essn works_on))
+
 ```
 
 
 ### *f)* 
 
 ```
-... Write here your answer ...
+fem= π Fname, Lname, Ssn, Sex, Dno (σ Sex='F' (employee))
+salario= γ Dno; avg(Salary)->avgsalario (fem⨝employee)
+π Dname, avgsalario (department⨝salario)
+
+
 ```
 
 
 ### *g)* 
 
 ```
-... Write here your answer ...
+funcionario= employee ⨝Ssn=Essn dependent
+n_dependentes= γ Ssn, Fname, Lname; count(Dependent_name)->dependentes (funcionario)
+π Ssn,Fname,Lname (σ dependentes>2 (n_dependentes))
+
 ```
 
 
 ### *h)* 
 
 ```
-... Write here your answer ...
+func_dep= employee⨝Ssn=Mgr_ssn department
+π Ssn, Fname, Lname (σ dependent.Essn=null (func_dep ⟕Ssn=Essn dependent))
+
 ```
 
 
 ### *i)* 
 
 ```
-... Write here your answer ...
+Proj_Aveiro = σ Plocation='Aveiro' (project)
+Dept_Aveiro =  π Dnumber (σ Dlocation='Aveiro' (dept_location))
+Dept_n_Aveiro = π Dnumber (department) - Dept_Aveiro
+Func_proj_Aveiro = π Fname, Lname, Address, Dno (employee ⨝ (works_on ⨝Pnumber=Pno Proj_Aveiro))
+π Fname, Lname, Address (Func_proj_Aveiro ⨝ Dno=Dnumber Dept_n_Aveiro)
+
 ```
 
 
