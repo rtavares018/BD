@@ -127,20 +127,34 @@ Func_proj_Aveiro = π Fname, Lname, Address, Dno (employee ⨝ (works_on ⨝Pnum
 ### *a)*
 
 ```
-... Write here your answer ...
+lista_pacientes = π numUtente (paciente)
+
+lista_pacientes_com_presc = π numUtente (prescricao)
+
+pacientes_sem_Presc = lista_pacientes - lista_pacientes_com_presc
+
+paciente ⨝ (pacientes_sem_Presc)
+
 ```
 
 ### *b)* 
 
 ```
-... Write here your answer ...
+ prescricao_medico=prescricao⨝ numMedico= numSNS medico
+ 
+ γ especialidade; count(numPresc)-> presc (prescricao_medico)
+ 
+
 ```
 
 
 ### *c)* 
 
 ```
-... Write here your answer ...
+ prescricao_farmacia=prescricao⨝ farmacia= nome farmacia
+ 
+ γ nome; count(numPresc)-> presc (prescricao_farmacia)
+ 
 ```
 
 
