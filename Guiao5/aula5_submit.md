@@ -1,17 +1,15 @@
 # BD: Guião 5
 
-
 ## ​Problema 5.1
- 
-### *a)*
+
+### _a)_
 
 ```
 π Fname,Lname,Ssn,Pname ((employee ⨝ Ssn=Essn works_on ) ⨝ Pnumber=Pno project )
 
 ```
 
-
-### *b)* 
+### _b)_
 
 ```
 carlos = ρ carlos_ssn←Ssn (π Ssn (σ Fname='Carlos' ∧ Minit='D' ∧ Lname='Gomes' (employee)))
@@ -20,8 +18,7 @@ funcionarios
 
 ```
 
-
-### *c)* 
+### _c)_
 
 ```
 funcionarios = π Fname,Lname,Ssn,Pname,Pnumber ((employee ⨝ Ssn=Essn works_on ) ⨝ Pnumber=Pno project )
@@ -30,8 +27,7 @@ tempo= γ  Pno;  sum(Hours)->Hours (works_on)
 
 ```
 
-
-### *d)* 
+### _d)_
 
 ```
 funcionario= π Fname,Lname,Ssn,Pname,Dno ((employee ⨝ Ssn=Essn works_on ) ⨝ Pnumber=Pno project )
@@ -42,16 +38,14 @@ projeto= π Pname (σ Pname='Aveiro Digital' (project))
 
 ```
 
-
-### *e)* 
+### _e)_
 
 ```
 π Fname,Lname, Pno (σ Pno=null (employee ⟕Ssn=Essn works_on))
 
 ```
 
-
-### *f)* 
+### _f)_
 
 ```
 fem= π Fname, Lname, Ssn, Sex, Dno (σ Sex='F' (employee))
@@ -61,8 +55,7 @@ salario= γ Dno; avg(Salary)->avgsalario (fem⨝employee)
 
 ```
 
-
-### *g)* 
+### _g)_
 
 ```
 funcionario= employee ⨝Ssn=Essn dependent
@@ -71,8 +64,7 @@ n_dependentes= γ Ssn, Fname, Lname; count(Dependent_name)->dependentes (funcion
 
 ```
 
-
-### *h)* 
+### _h)_
 
 ```
 func_dep= employee⨝Ssn=Mgr_ssn department
@@ -80,8 +72,7 @@ func_dep= employee⨝Ssn=Mgr_ssn department
 
 ```
 
-
-### *i)* 
+### _i)_
 
 ```
 Proj_Aveiro = σ Plocation='Aveiro' (project)
@@ -92,39 +83,36 @@ Func_proj_Aveiro = π Fname, Lname, Address, Dno (employee ⨝ (works_on ⨝Pnum
 
 ```
 
-
 ## ​Problema 5.2
 
-### *a)*
+### _a)_
 
 ```
-... Write here your answer ...
+π nif,nome,fax,endereco,tipo,condpag (σ numero=null (fornecedor ⟕(nif=fornecedor) encomenda))
 ```
 
-### *b)* 
+### _b)_
 
 ```
-... Write here your answer ...
+γ codProd;avg(unidades)->numUnidades item
 ```
 
-
-### *c)* 
-
-```
-... Write here your answer ...
-```
-
-
-### *d)* 
+### _c)_
 
 ```
-... Write here your answer ...
+γ numEnc;count(numEnc)-> numUnidades item
 ```
 
+### _d)_
+
+```
+γ fornecedor.nome, produto.nome; sum(item.unidades)->quantidade (π fornecedor.nome, produto.nome,item.unidades (produto ⨝(codigo=codProd) (item ⨝(numEnc=numero) (fornecedor ⨝(nif=fornecedor) encomenda)))) 
+
+```
 
 ## ​Problema 5.3
 
-### *a)*
+### _a)_
 
 ```
 lista_pacientes = π numUtente (paciente)
@@ -137,57 +125,55 @@ paciente ⨝ (pacientes_sem_Presc)
 
 ```
 
-### *b)* 
+### _b)_
 
 ```
  prescricao_medico=prescricao⨝ numMedico= numSNS medico
- 
+
  γ especialidade; count(numPresc)-> presc (prescricao_medico)
- 
+
 
 ```
 
-
-### *c)* 
+### _c)_
 
 ```
  prescricao_farmacia=prescricao⨝ farmacia= nome farmacia
- 
+
  γ nome; count(numPresc)-> presc (prescricao_farmacia)
- 
+
 ```
 
-
-### *d)* 
+### _d)_
 
 ```
 (
 	π farmaco.nome (
 		σ farmaco.numRegFarm=906 (farmaco)
-	) 
+	)
 ) - (
 	π presc_farmaco.nomeFarmaco (
 		σ presc_farmaco.numRegFarm=906 (
 			prescricao ⨝ prescricao.numPresc=presc_farmaco.numPresc (presc_farmaco)
-		) 
-	) 
+		)
+	)
 )
 ```
 
-### *e)* 
+### _e)_
 
 ```
 γ prescricao.farmacia, farmaceutica.nome; count(presc_farmaco.numRegFarm)->farmacosVendidos (
 	farmaceutica ⨝ farmaceutica.numReg=presc_farmaco.numRegFarm (
 		presc_farmaco ⨝ presc_farmaco.numPresc=prescricao.numPresc (
 			σ prescricao.farmacia!=null (prescricao)
-		) 
-	) 
-) 
+		)
+	)
+)
 
 ```
 
-### *f)* 
+### _f)_
 
 ```
 σ numeroMedicosQuePrescreveram>1 (
