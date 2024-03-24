@@ -161,17 +161,40 @@ paciente ⨝ (pacientes_sem_Presc)
 ### *d)* 
 
 ```
-... Write here your answer ...
+(
+	π farmaco.nome (
+		σ farmaco.numRegFarm=906 (farmaco)
+	) 
+) - (
+	π presc_farmaco.nomeFarmaco (
+		σ presc_farmaco.numRegFarm=906 (
+			prescricao ⨝ prescricao.numPresc=presc_farmaco.numPresc (presc_farmaco)
+		) 
+	) 
+)
 ```
 
 ### *e)* 
 
 ```
-... Write here your answer ...
+γ prescricao.farmacia, farmaceutica.nome; count(presc_farmaco.numRegFarm)->farmacosVendidos (
+	farmaceutica ⨝ farmaceutica.numReg=presc_farmaco.numRegFarm (
+		presc_farmaco ⨝ presc_farmaco.numPresc=prescricao.numPresc (
+			σ prescricao.farmacia!=null (prescricao)
+		) 
+	) 
+) 
+
 ```
 
 ### *f)* 
 
 ```
-... Write here your answer ...
+σ numeroMedicosQuePrescreveram>1 (
+	γ paciente.numUtente, paciente.nome; count(medico.numSNS)->numeroMedicosQuePrescreveram (
+		medico ⨝ medico.numSNS=prescricao.numMedico (
+			prescricao ⨝ prescricao.numUtente=paciente.numUtente (paciente)
+		)
+	)
+)
 ```
