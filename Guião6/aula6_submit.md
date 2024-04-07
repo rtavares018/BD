@@ -363,35 +363,61 @@ GROUP BY fornecedor.nome, produto.nome;
 ##### _a)_
 
 ```
-... Write here your answer ...
+SELECT paciente.numUtente
+FROM paciente
+LEFT JOIN prescricao ON paciente.numUtente = prescricao.numUtente
+WHERE prescricao.numPresc IS NULL;
 ```
 
 ##### _b)_
 
 ```
-... Write here your answer ...
+SELECT medico.especialidade, COUNT(prescricao.numPresc) AS presc
+FROM prescricao
+JOIN medico ON prescricao.numMedico = medico.numSNS
+GROUP BY medico.especialidade;
 ```
 
 ##### _c)_
 
 ```
-... Write here your answer ...
+SELECT prescricao.farmacia, COUNT(prescricao.numPresc) AS presc
+FROM prescricao
+GROUP BY prescricao.farmacia;
 ```
 
 ##### _d)_
 
 ```
-... Write here your answer ...
+SELECT farmaco.nome
+FROM farmaco
+WHERE farmaco.numRegFarm = 906
+EXCEPT
+SELECT presc_farmaco.nomeFarmaco
+FROM prescricao
+JOIN presc_farmaco ON prescricao.numPresc = presc_farmaco.numPresc
+WHERE presc_farmaco.numRegFarm = 906;
 ```
 
 ##### _e)_
 
 ```
-... Write here your answer ...
+SELECT farmacia, farmaceutica.nome, COUNT(nomeFarmaco) AS farmaco_vendido_farmacia
+FROM prescricao
+JOIN presc_farmaco ON prescricao.numPresc = presc_farmaco.numPresc
+JOIN farmaceutica ON presc_farmaco.numRegFarm = farmaceutica.numReg
+WHERE prescricao.dataProc IS NOT NULL
+GROUP BY farmacia, farmaceutica.nome
+ORDER BY farmacia;
 ```
 
 ##### _f)_
 
 ```
-... Write here your answer ...
+SELECT prescricao.numUtente, paciente.nome
+FROM prescricao
+JOIN medico ON prescricao.numMedico = medico.numSNS
+JOIN paciente ON prescricao.numUtente = paciente.numUtente
+GROUP BY prescricao.numUtente, paciente.nome
+HAVING COUNT(DISTINCT prescricao.numMedico) > 1;
 ```
