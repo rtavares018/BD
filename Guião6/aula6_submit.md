@@ -315,25 +315,37 @@ WHERE project.Plocation = 'Lisboa' AND dept_location.Dlocation != 'Edifício E';
 ##### _a)_
 
 ```
-... Write here your answer ...
+SELECT fornecedor.nif, fornecedor.nome, fornecedor.fax, fornecedor.endereco, fornecedor.tipo, fornecedor.condpag
+FROM fornecedor
+LEFT JOIN encomenda ON fornecedor.nif = encomenda.nif
+WHERE encomenda.numero IS NULL;
 ```
 
 ##### _b)_
 
 ```
-... Write here your answer ...
+SELECT codProd, AVG(unidades) AS numUnidades
+FROM item
+GROUP BY codProd;
 ```
 
 ##### _c)_
 
 ```
-... Write here your answer ...
+SELECT numEnc, COUNT(numEnc) AS numUnidades
+FROM item
+GROUP BY numEnc;
 ```
 
 ##### _d)_
 
 ```
-... Write here your answer ...
+SELECT fornecedor.nome, produto.nome, SUM(item.unidades) AS quantidade
+FROM produto
+INNER JOIN item ON produto.codigo = item.codProd
+INNER JOIN encomenda ON item.numEnc = encomenda.numero
+INNER JOIN fornecedor ON encomenda.nif = fornecedor.nif
+GROUP BY fornecedor.nome, produto.nome;
 ```
 
 ### 5.3
