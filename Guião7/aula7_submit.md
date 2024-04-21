@@ -1,95 +1,93 @@
 # BD: Guião 7
 
+## ​7.2
 
-## ​7.2 
- 
-### *a)*
-
-```
-... Write here your answer ...
-It is possible to <u>underline</u> -> {A, B,.. }
--> R1 (_A_, B, C)
--> R2 (B,F)
-```
-
-### *b)* 
+### _a)_
 
 ```
-... Write here your answer ...
+Está na Primeira Forma Normal (1FN) pois admite dependências parciais:
+   Nome_Autor → Afiliacao_Autor
 ```
 
+### _b)_
 
-
+```
+1FN para 2FN:
+   Livro1(Nome_Autor, Afiliacao_Autor)
+   2FN para 3FN:
+   Livro2(No_paginas, Tipo_livro, Preco)
+   Livro3(Editor, Endereço_Editor)
+```
 
 ## ​7.3
- 
-### *a)*
+
+### _a)_
 
 ```
-... Write here your answer ...
-```
-
-
-### *b)* 
+{A, B}
 
 ```
-... Write here your answer ...
-```
 
-
-### *c)* 
+### _b)_
 
 ```
-... Write here your answer ...
+R1={A, B, C}
+R2={A, D, E, I, J}
+R3={B, F, G, H}
 ```
 
+### _c)_
+
+```
+R1={A, B, C}
+R2={A, D, E}
+R3={D, I, J}
+R4={B, F}
+R5={F ,G, H}
+
+```
 
 ## ​7.4
- 
-### *a)*
+
+### _a)_
 
 ```
 ... Write here your answer ...
 ```
 
-
-### *b)* 
-
-```
-... Write here your answer ...
-```
-
-
-### *c)* 
+### _b)_
 
 ```
 ... Write here your answer ...
 ```
 
+### _c)_
 
+```
+... Write here your answer ...
+```
 
 ## ​7.5
- 
-### *a)*
+
+### _a)_
 
 ```
 ... Write here your answer ...
 ```
 
-### *b)* 
+### _b)_
 
 ```
 ... Write here your answer ...
 ```
 
-
-### *c)* 
+### _c)_
 
 ```
 ... Write here your answer ...
 ```
 
-### *d)* 
+### _d)_
 
 ```
 ... Write here your answer ...
