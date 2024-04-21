@@ -49,21 +49,26 @@ It is possible to <u>underline</u> -> {A, B,.. }
 ### *a)*
 
 ```
-... Write here your answer ...
+{_A_,_B_}
 ```
 
 
 ### *b)* 
 
 ```
-... Write here your answer ...
+R1:{_A_,_B_,C,D}
+R2:{_D_,E}
+
+
 ```
 
 
 ### *c)* 
 
 ```
-... Write here your answer ...
+R1:{_A_,_B_,C,D}
+R2:{_D_,E}
+R3:{_A_,C}
 ```
 
 
@@ -73,24 +78,29 @@ It is possible to <u>underline</u> -> {A, B,.. }
 ### *a)*
 
 ```
-... Write here your answer ...
+{_A_,_B_}
 ```
 
 ### *b)* 
 
 ```
-... Write here your answer ...
+R1:{_A_,_B_,C,D,E}
+R2:{_A_,C,D}
+
 ```
 
 
 ### *c)* 
 
 ```
-... Write here your answer ...
+R1:{_A_,_B_,E}
+R2:{_A_,C}
+R3:{_C_,D}
 ```
 
 ### *d)* 
 
 ```
-... Write here your answer ...
+Já esta na BCNF
+
 ```
