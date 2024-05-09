@@ -1,53 +1,118 @@
 # BD: Guião 8
 
-
 ## ​8.1. Complete a seguinte tabela.
+
 Complete the following table.
 
-| #    | Query                                                                                                      | Rows  | Cost  | Pag. Reads | Time (ms) | Index used | Index Op.            | Discussion |
-| :--- | :--------------------------------------------------------------------------------------------------------- | :---- | :---- | :--------- | :-------- | :--------- | :------------------- | :--------- |
-| 1    | SELECT * from Production.WorkOrder                                                                         | 72591 | 0.488 | 552        | 451       |PK_WorkOrder_WorkOrderID  | Clustered Index Scan |    Pretendemos obter todas as rows         |
-| 2    | SELECT * from Production.WorkOrder where WorkOrderID=1234                                                  |     1  |    0.003   |      278      |      36     |      PK_WorkOrder_WorkOrderID      |       Clustered Index Seek               |         foi mais rapido do que a #1 pois só quisemos obter apenas uma row   |
-| 3.1  | SELECT * FROM Production.WorkOrder WHERE WorkOrderID between 10000 and 10010                               |     11  |   0.003     |       278     |        41   |    PK_WorkOrder_WorkOrderID        |     Clustered Index Seek                 |      Obtivemos um tempo maior em relaçao ao anterioir pois aqui tivemos de retirar as rows desde a 10000 ate 10010      |
-| 3.2  | SELECT * FROM Production.WorkOrder WHERE WorkOrderID between 1 and 72591                                   |  72591     |  0.488     |    808        |   457       |      PK_WorkOrder_WorkOrderID      |       Clustered Index Seek  |       Esta consulta pega todas as linhas da tabela WorkOrder (IDs de ordem de trabalho variam entre 1 e 72591). Isso explica a alta quantidade de leituras de página e o tempo mais longo de execução.  |
-| 4    | SELECT * FROM Production.WorkOrder WHERE StartDate = '2012-05-14'                                          | 55      |0.522       | 812           | 97          |PK_WorkOrder_WorkOrderID  | Clustered Index Scan |    Obter todas as rows em que o trabalho começou a 2012-05-14   |
-| 5    | SELECT * FROM Production.WorkOrder WHERE ProductID = 757                                                   |   9    |0.037       |302            |       53    |     IX_WorkOrder_ProductID       |   Non clusteres Index Seek                   |     Esta consulta mostra uma performance superior em comparação com as anteriores, graças ao uso do índice não clusterizado IX_WorkOrder_ProductID       |
-| 6.1  | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 757                              |   9    |  0.037     |      302      | 38          |      IX_WorkOrder_ProductID       |   Non clusteres Index Seek      |  Nesta com o mesmo numero paginas lidas ainda foi possivel ter menos tempo de execuçao          |
-| 6.2  | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945                              |72591       |  0.474      |  812          | 42          |       PK_WorkOrder_WorkOrderID  | Clustered Index Scan        |       Apesar do alto numero de paginas lidas o tempo de execuçao é baixo    |
-| 6.3  | SELECT WorkOrderID FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2011-12-04'            |    1   |      0.474 |    814        |    20       |    PK_WorkOrder_WorkOrderID  | Clustered Index Scan       | tem muitas paginas lidas e o tempo é muito baixo xomparado aos anteriores           |
-| 7    | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2011-12-04' |   1    |      0.474 |       814     | 24          |          PK_WorkOrder_WorkOrderID  | Clustered Index Scan                  |    Esta consulta utiliza um "Clustered Index Scan" para buscar o WorkOrderID e StartDate         |
-| 8   | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2011-12-04' |   1    |      0.474 |       814     | 24          |          PK_WorkOrder_WorkOrderID  | Clustered Index Scan                  |   Esta consulta utiliza um "Clustered Index Scan" para buscar o WorkOrderID e StartDate          |
+| #   | Query                                                                                                      | Rows  | Cost  | Pag. Reads | Time (ms) | Index used | Index Op.            | Discussion |
+| :-- | :--------------------------------------------------------------------------------------------------------- | :---- | :---- | :--------- | :-------- | :--------- | :------------------- | :--------- |
+| 1   | SELECT \* from Production.WorkOrder                                                                        | 72591 | 0.484 | 531        | 1171      | …          | Clustered Index Scan |            |
+| 2   | SELECT \* from Production.WorkOrder where WorkOrderID=1234                                                 |       |       |            |           |            |                      |            |
+| 3.1 | SELECT \* FROM Production.WorkOrder WHERE WorkOrderID between 10000 and 10010                              |       |       |            |           |            |                      |            |
+| 3.2 | SELECT \* FROM Production.WorkOrder WHERE WorkOrderID between 1 and 72591                                  |       |       |            |           |            |                      |            |
+| 4   | SELECT \* FROM Production.WorkOrder WHERE StartDate = '2007-06-25'                                         |       |       |            |           |            |                      |            |
+| 5   | SELECT \* FROM Production.WorkOrder WHERE ProductID = 757                                                  |       |       |            |           |            |                      |            |
+| 6.1 | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 757                              |       |       |            |           |            |                      |            |
+| 6.2 | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945                              |       |       |            |           |            |                      |            |
+| 6.3 | SELECT WorkOrderID FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2006-01-04'            |       |       |            |           |            |                      |            |
+| 7   | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2006-01-04' |       |       |            |           |            |                      |            |
+| 8   | SELECT WorkOrderID, StartDate FROM Production.WorkOrder WHERE ProductID = 945 AND StartDate = '2006-01-04' |       |       |            |           |            |                      |            |
 
 ## ​8.2.
 
 ### a)
 
 ```
-... Write here your answer ...
+CREATE TABLE mytemp (
+    rid BIGINT /*IDENTITY (1, 1)*/ NOT NULL,
+    at1 INT NULL,
+    at2 INT NULL,
+    at3 INT NULL,
+    lixo varchar(100) NULL
+    CONSTRAINT PK_mytemp PRIMARY KEY CLUSTERED (rid)
+);
 ```
 
 ### b)
 
 ```
-... Write here your answer ...
+Tempo -  73036 milisegundos
+Percentagem de fragmentação dos índices - 98,75%
+Percentagem de ocupação das páginas dos índices - 68,75%
 ```
 
 ### c)
 
 ```
-... Write here your answer ...
+- WITH FILLFACTOR = 65:
+Tempo: 76550 ms
+- WITH FILLFACTOR = 80:
+Tempo: 72496 ms
+- WITH FILLFACTOR = 95:
+Tempo: 75666 ms
 ```
 
 ### d)
 
 ```
-... Write here your answer ...
+Para esta alínea eliminei os fillfactors.
+
+Tempo: 58616 ms
 ```
 
 ### e)
 
 ```
-... Write here your answer ...
+Para esta alínea eliminei os fillfactors e mantive o rid do tipo identity.
+Tempo sem índices: 58616 ms
+Tempo com índices: 101027 ms
+
+Podemos concluir que com os índices o tempo de inserção aumenta significativamente.
+
+Código final:
+IF EXISTS(SELECT 1 FROM sys.tables WHERE name = 'mytemp') DROP TABLE mytemp
+
+CREATE TABLE mytemp (
+    rid BIGINT IDENTITY (1, 1) NOT NULL,
+    at1 INT NULL,
+    at2 INT NULL,
+    at3 INT NULL,
+    lixo varchar(100) NULL
+    CONSTRAINT PK_mytemp PRIMARY KEY CLUSTERED (rid)
+);
+
+-- Criação dos índices
+CREATE INDEX IX_mytemp_at1 ON mytemp (at1);
+CREATE INDEX IX_mytemp_at2 ON mytemp (at2);
+CREATE INDEX IX_mytemp_at3 ON mytemp (at3);
+CREATE INDEX IX_mytemp_lixo ON mytemp (lixo);
+
+	-- Record the Start Time
+	DECLARE @start_time DATETIME, @end_time DATETIME;
+	SET @start_time = GETDATE();
+	PRINT @start_time
+
+	-- Generate random records
+	DECLARE @val as int = 1;
+	DECLARE @nelem as int = 50000;
+
+	SET nocount ON
+
+	WHILE @val <= @nelem
+	BEGIN
+		DBCC DROPCLEANBUFFERS; -- need to be sysadmin
+		INSERT INTO mytemp ( at1, at2, at3, lixo)
+		SELECT CAST((RAND() * @nelem) AS INT),
+           CAST((RAND() * @nelem) AS INT), CAST((RAND() * @nelem) AS INT),
+           'lixo...lixo...lixo...lixo...lixo...lixo...lixo...lixo...lixo';
+    SET @val = @val + 1;
+	 END
+
+	 PRINT 'Inserted ' + str(@nelem) + ' total records'
+	-- Duration of Insertion Process
+	SET @end_time = GETDATE();
+	PRINT 'Milliseconds used: ' + CONVERT(VARCHAR(20), DATEDIFF(MILLISECOND,
+@start_time, @end_time));
 ```
 
 ## ​8.3.
