@@ -155,7 +155,58 @@ SELECT * FROM Company.empregados_mais_bem_pagos(3);
 ### _g)_
 
 ```
-... Write here your answer ...
+CREATE FUNCTION dbo.employeeDeptHighAverage (@Dno INT)
+RETURNS @ProjectInfo TABLE
+(
+    Pname VARCHAR(30),
+    Pnumber INT,
+    Plocation VARCHAR(20),
+    Dnum INT,
+    Budget DECIMAL(10,2),
+    TotalBudget DECIMAL(10,2)
+)
+AS
+BEGIN
+    DECLARE @Pname VARCHAR(30), 
+            @Pnumber INT, 
+            @Plocation VARCHAR(20), 
+            @Dnum INT, 
+            @Budget DECIMAL(10,2), 
+            @TotalBudget DECIMAL(10,2) = 0, 
+            @EmployeeSalary DECIMAL(10,2);
+
+    DECLARE project_cursor CURSOR FOR 
+    SELECT p.Pname, p.Pnumber, p.Plocation, p.Dnum, e.Salary
+    FROM Company.Project p
+    JOIN Company.Works_on w ON p.Pnumber = w.Pno
+    JOIN Company.Employee e ON w.Essn = e.Ssn
+    WHERE p.Dnum = @Dno;
+
+    OPEN project_cursor;
+
+    FETCH NEXT FROM project_cursor INTO @Pname, @Pnumber, @Plocation, @Dnum, @EmployeeSalary;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Calculate the budget based on the employee salary and 40-hour work week
+        SET @Budget = @EmployeeSalary / 40;
+        
+        -- Update the total budget
+        SET @TotalBudget = @TotalBudget + @Budget;
+
+        -- Insert the current project's details into the result table
+        INSERT INTO @ProjectInfo (Pname, Pnumber, Plocation, Dnum, Budget, TotalBudget)
+        VALUES (@Pname, @Pnumber, @Plocation, @Dnum, @Budget, @TotalBudget);
+
+        FETCH NEXT FROM project_cursor INTO @Pname, @Pnumber, @Plocation, @Dnum, @EmployeeSalary;
+    END;
+
+    CLOSE project_cursor;
+    DEALLOCATE project_cursor;
+
+    RETURN;
+END;
+
 ```
 
 ### _h)_
